@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getArchives, getNotes } from "../controlers/preview";
+import { getArchives, getNotes } from "../controllers/preview";
 
 export const previewRoute = Router();
 

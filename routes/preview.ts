@@ -1,6 +1,8 @@
 import { Router } from "express";
-import { getNotes } from "../controlers/preview";
+import { getArchives, getNotes } from "../controlers/preview";
 
 export const previewRoute = Router();
 
 previewRoute.get("/", getNotes);
+
+previewRoute.get("/archived", getArchives);

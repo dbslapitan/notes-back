@@ -9,3 +9,11 @@ export const getNotes = async (req: Request, res: Response) => {
 
   res.json(notes);
 };
+
+export const getArchives = async (req: Request, res: Response) => {
+  
+  const preview = await User.findOne({username: "preview"});
+  const notes = await Note.find({isArchived: true, userId: preview?._id}).populate("userId");
+
+  res.json(notes);
+};

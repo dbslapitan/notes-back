@@ -5,7 +5,8 @@ export interface INote{
   userId: string | IUser,
   tags: string[],
   content: string,
-  title: string
+  title: string,
+  isArchived: boolean
 }
 
 const NoteSchema = new Schema<INote>({
@@ -25,6 +26,10 @@ const NoteSchema = new Schema<INote>({
   title: {
     type: String,
     required: true
+  },
+  isArchived: {
+    type: Boolean,
+    default: false
   }
 });
 

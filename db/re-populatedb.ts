@@ -20,12 +20,13 @@ const DB_URI = process.env.DB_URI;
 
   const notes = DATA.notes.map(async (note) => {
     console.log(`Adding ${note.title} to notes collection...`);
-    const {title, tags, content} = note;
+    const {title, tags, content, isArchived} = note;
     return await Note.create({
       userId: user,
       title,
       tags,
-      content
+      content,
+      isArchived
     });
   });
 

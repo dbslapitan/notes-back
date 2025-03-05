@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import DATA from "../data.json";
+import DATA from "./data.json";
 import { connect, connection } from "mongoose";
 import { User } from "../schemas/User";
 import { Note } from "../schemas/Note";

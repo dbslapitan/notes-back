@@ -11,7 +11,8 @@
     "build": "tsc",
     "clean": "rimraf ./dist",
     "start-dev": "tsc-watch --onSuccess \"node dist/server.js\"",
-    "dev": "npm run clean && npm run build & npm run start-dev"
+    "dev": "npm run clean && npm run build & npm run start-dev",
+    "reseed": "node ./dist/db/re-populatedb.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

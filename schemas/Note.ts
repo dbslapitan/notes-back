@@ -31,6 +31,12 @@ const NoteSchema = new Schema<INote>({
     type: Boolean,
     default: false
   }
-});
+}, {
+  timestamps: {
+    updatedAt: "lastEdited",
+    createdAt: "createdAt"
+  }
+}
+);
 
 export const Note = model("Note", NoteSchema);

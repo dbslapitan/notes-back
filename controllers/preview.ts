@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { Note } from "../schemas/Note";
 import { User } from "../schemas/User";
 
+const PREVIEW_ID = process.env.PREVIEW_ID;
+
 export const getNotes = async (req: Request, res: Response) => {
   
   const preview = await User.findOne({username: "preview"});
@@ -20,3 +22,17 @@ export const getNotes = async (req: Request, res: Response) => {
     tags
   });
 };
+
+export const saveNote = async (req: Request, res: Response) => {
+  const note = {
+    ...req.body,
+    userId: PREVIEW_ID
+  };
+  try{
+    const newNote = await Note.create(note);
+    res.json(newNote._id);
+  }
+  catch(e){
+    res.status(500).json(e);
+  }
+}

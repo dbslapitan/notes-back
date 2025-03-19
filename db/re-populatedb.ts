@@ -22,30 +22,14 @@ const DB_URI = process.env.DB_URI;
     const user = await User.create({ username: "preview" });
     console.log("preview added to Users...");
 
-    const notes = DATA.notes.map(async (note) => {
-      console.log(`Adding ${note.title} to notes collection...`);
-      const { title, tags, content, isArchived, lastEdited } = note;
-      return await Note.findOneAndReplace(
-        {}, {
-        userId: user,
-        title,
-        tags,
-        content,
-        isArchived,
-        lastEdited: new Date(lastEdited)
-      }, {
-        upsert: true
-      }
-      );
-    });
-
-    await Promise.allSettled(notes);
-
-    console.log("Notes have been populated...");
-
+    console.log("Populating notes...");
+    await Note.create(DATA.notes.map(note => {return {...note, userId: user, createdAt: new Date()}}), {timestamps: false});
+    console.log("Notes populated...");
     await connection.close();
   }
   catch (e) {
     console.log(e);
+
+    await connection.close();
   }
 })();

@@ -34,8 +34,7 @@ const DB_URI = process.env.DB_URI;
         isArchived,
         lastEdited: new Date(lastEdited)
       }, {
-        upsert: true,
-        timestamps: false
+        upsert: true
       }
       );
     });

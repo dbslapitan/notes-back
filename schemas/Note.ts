@@ -2,7 +2,7 @@ import { model, Schema, SchemaTypes } from "mongoose";
 import { IUser, User } from "./User";
 
 export interface INote{
-  userId: string | IUser,
+  userId?: string | IUser,
   tags: string[],
   content: string,
   title: string,

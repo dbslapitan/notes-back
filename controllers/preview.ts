@@ -7,7 +7,7 @@ const PREVIEW_ID = process.env.PREVIEW_ID;
 export const getNotes = async (req: Request, res: Response) => {
   
   const preview = await User.findOne({username: "preview"});
-  const notes = await Note.find({userId: preview?._id}).populate("userId");
+  const notes = await Note.find({userId: preview?._id}).populate("userId").sort({lastEdited: "desc"});
   const tags = notes.reduce((accumulator, current) => {
     const temp = [...accumulator];
     current.tags.forEach(tag => {

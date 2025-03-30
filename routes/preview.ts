@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { getNotes, saveNote } from "../controllers/preview";
+import { getNotes, createNote, saveNote } from "../controllers/preview";
 
 export const previewRoute = Router();
 
 previewRoute.get("/", getNotes);
-previewRoute.post("/", saveNote);
+previewRoute.post("/", createNote);
+previewRoute.patch("/:id", saveNote);

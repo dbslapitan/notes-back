@@ -15,7 +15,6 @@ export const getNotes = async (req: Request, res: Response) => {
     });
     return temp;
   }, [] as string[]);
-  console.log("notes");
   res.json({
     notes,
     tags

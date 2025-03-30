@@ -49,3 +49,15 @@ export const saveNote = async (req: Request, res: Response) => {
     res.status(500).json(e);
   }
 }
+
+export const deleteNote = async (req: Request, res: Response) => {
+  try{
+    const {id} = req.params;
+    
+    await Note.findByIdAndDelete(id);
+    res.json("success");
+  }
+  catch(e){
+    res.status(500).json(e);
+  }
+}
